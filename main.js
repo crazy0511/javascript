@@ -388,6 +388,7 @@ switch (date) {
 }
 */
 
+/*
 var course = {
     name: 'Javacript',
     coin: 0
@@ -395,3 +396,87 @@ var course = {
 
 var result = course.coin > 0 ? `${course.coin} Coins` : 'Miễn phí';
 console.log(result); 
+*/
+
+//For loop
+// var i = 1;
+// for (; i <= 5;){
+//     console.log(i);
+//     i++;
+// }
+
+// var languages = ['Js', 'PHP', 'Java', 'Python'];
+// var len = languages.length;
+// for(var i = 0; i < len; i++){
+//     console.log(languages[i]);
+// }
+
+// var myInfo = {
+//     name: 'Pham Quang Tu',
+//     age: 23,
+//     address: 'Quang Ninh'
+// }
+
+// for(var key in myInfo){
+//     console.log(key);
+//     console.log(myInfo[key]);
+//     console.log("----------------");
+// }
+
+// var languages = ['PHP', 'Js', 'Python'];
+// for(var key of languages){
+//     console.log(key);
+//     console.log('-----------------');
+// }
+// var text = 'TuCoi';
+// for(var value of text){
+//     console.log(value);
+// }
+
+//while loop
+// var i = 1;
+// while(i <= 5){
+//     console.log(`Lần thứ ${i}`);
+//     i++;
+// }
+
+// do/while loop
+// var i = 0;
+// do {
+//     i++;
+//     console.log(` Lần thứ ${i}`);
+// } while (i < 5)
+
+//Break & continue in loop
+// for(var i = 0; i < 10; i++){
+//     console.log('Lần thứ ' + i);
+//     if(i == 5){
+//         break;
+//     }
+// }
+
+// for(var i = 0; i < 10; i++){
+//     if( i % 2 !== 0){
+//         continue;
+//     }
+//     console.log('Số chẵn: ' + i);
+// }
+
+//Vòng lặp lồng nhau - Nested loop
+// var arr = [
+//     [1,2],
+//     [3,4],
+//     [5,6]
+// ];
+// for(var i = 0; i < arr.length; i++){
+//     for(var j = 0; j < arr[i].length; j++){
+//         console.log('Giá trị: ' + arr[i][j]);
+//     }
+// }
+
+var sum = 0;
+for(var i = 0; i <= 100; i+=5){
+    console.log(i);
+    sum += i;
+}
+console.log('Tổng số chia hết cho 5 từ 0 đến 100: ' + sum);
