@@ -474,9 +474,138 @@ console.log(result);
 //     }
 // }
 
-var sum = 0;
-for(var i = 0; i <= 100; i+=5){
-    console.log(i);
-    sum += i;
+// var sum = 0;
+// for(var i = 0; i <= 100; i+=5){
+//     console.log(i);
+//     sum += i;
+// }
+// console.log('Tổng số chia hết cho 5 từ 0 đến 100: ' + sum);
+
+//1. Xác định điểm dừng
+//2. Logic handle ==> Tạo ra điểm dừng 
+
+/*
+    Array methods:
+        forEach()
+        every()
+        some()
+        find()
+        filter()
+        map()
+        reduce()
+*/
+
+/*
+var courses = [
+    {
+        id: 1,
+        name: 'Javascript',
+        coin: 300
+    },
+    {
+        id: 2,
+        name: 'Java',
+        coin: 0
+    },
+    {
+        id: 3,
+        name: 'HTML & CSS',
+        coin: 200
+    },
+    {
+        id: 4,
+        name: 'Java',
+        coin: 300
+    },
+]
+
+//1. forEach
+courses.forEach(function(course) {
+    console.log(course)
+}); 
+
+//2. every: kiếm tra đến từng phần tử trong arr
+var isFree = courses.every(function(course, index){
+    console.log('index = '  + index);
+    return course.coin === 0;
+});
+console.log('Khóa học có miễn phí không: ' + isFree);
+
+//3. some: 1 phần tử thỏa mãn --> true
+var isFree = courses.some(function(course, index){
+    console.log('index = '  + index);
+    return course.coin === 0;
+});
+console.log('Khóa học có miễn phí không: ' + isFree);
+console.log('----------------------------');
+
+//4. find: trả về 1 phần tử trong mảng
+var course = courses.find(function(course){
+    return course.name === 'Java';
+})
+console.log(course);
+console.log('----------------------------');
+
+//5. filter: trả về tất các các phần từ thỏa mãn
+var course = courses.filter(function(course, index){
+    console.log(index);
+    return course.name === 'Java';
+})
+console.log(course);
+*/
+
+/*
+//Array map
+function coursesHandler (course){
+    return {
+        id: course.id,
+        name: `Khoa hoc: ${course.name}`,
+        coin: course.coin,
+        coinText: `Gia: ${course.coin}`
+    };
 }
-console.log('Tổng số chia hết cho 5 từ 0 đến 100: ' + sum);
+
+var newCourses = courses.map(coursesHandler);
+console.log(newCourses);
+*/
+
+var courses = [
+    {
+        id: 1,
+        name: 'Javascript',
+        coin: 300
+    },
+    {
+        id: 2,
+        name: 'Java',
+        coin: 0
+    },
+    {
+        id: 3,
+        name: 'HTML & CSS',
+        coin: 200
+    },
+    {
+        id: 4,
+        name: 'Python',
+        coin: 300
+    },
+];
+//Array reduce
+//Ví dụ: tính tổng giá coin của tất cả các course
+//accumulator: biến lưu trữ kết quả
+var i = 0;
+function coinHandler (accumulator, currentValue, currentIndex, originArray) {
+    i++;
+    var total = accumulator + currentValue.coin;
+    console.table({
+        'Lượt chạy: ': i,
+        'Biến tích trữ: ': accumulator,
+        'Giá khóa học: ': currentValue.coin,
+        'Tích trữ được: ': total
+    });
+    return total;
+}
+//Giá trị khởi tạo cho totalCoin = 0
+var totalCoin = courses.reduce(coinHandler, 0); //initial value
+console.log(totalCoin);
