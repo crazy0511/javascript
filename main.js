@@ -569,6 +569,7 @@ var newCourses = courses.map(coursesHandler);
 console.log(newCourses);
 */
 
+/*
 var courses = [
     {
         id: 1,
@@ -609,3 +610,182 @@ function coinHandler (accumulator, currentValue, currentIndex, originArray) {
 //Giá trị khởi tạo cho totalCoin = 0
 var totalCoin = courses.reduce(coinHandler, 0); //initial value
 console.log(totalCoin);
+*/
+
+//Callback: Là hàm (function) được truyền qua đối số
+//Khi gọi hàm khác
+//1. Là hàm
+//2. Được truyền qua đối số
+//3. Được gọi lại (trong hàm nhận đối số)
+
+/* 
+function myFunction(param){
+    param('Javascript');
+}
+//myCallback là 1 callback
+function myCallback(value){
+    console.log('Value: ', value);
+}
+myFunction(myCallback);
+*/
+
+
+/*
+Array.prototype.map2 = function(callback){
+    var Output = [];
+    var len = this.length;
+    for(var i = 0; i < len; i++){
+        var result = callback(this[i]);
+        Output.push(result);
+    }
+    return Output;
+}
+var courses = ['Javascript', 'PHP', 'Ruby'];
+
+var htmls = courses.map2(function(course){
+    return `<h2>${course}</h2>`;
+});
+console.log(htmls.join('\n'));
+
+// var htmls = courses.map(function(course){
+//     return `<h2>${course}</h2>`;
+// });
+// console.log(htmls.join(''));
+*/
+
+/*
+var courses = ['Javascrip', 'PHP'];
+courses.length = 10;
+//chỉ hiển thị phần tử có trong mảng
+//Rỗng thì bỏ
+for(var index in courses){
+    console.log(courses[index]);
+}
+*/
+
+/*
+//forEach
+//Câu lệnh for in duyệt qua cả prototype
+Array.prototype.forEach2 = function(callback) {
+    for(var index in this){
+        //Loại bỏ __proto__
+        if(this.hasOwnProperty(index)){
+            callback(this[index], index, this);
+        }
+    }
+}
+var courses = ['Js', 'PHP', 'Ruby'];
+courses.forEach2(function(course, index, array){
+    console.log(course, index, array);
+});
+*/
+
+
+/*
+//filter
+Array.prototype.filter2 = function(callback){
+    var result = [];
+    for(var index in this){
+        if(this.hasOwnProperty(index)){
+            var check = callback(this[index], index);
+            if(check){
+                result.push(this[index]);
+            }
+        }
+    }
+    return result;
+}
+var courses = [
+    {
+        name: 'Javascript',
+        coin: 680
+    },
+    {
+        name: 'Java',
+        coin: 600
+    },
+    {
+        name: 'Javascript',
+        coin: 400
+    },
+];
+
+var filterCourses = courses.filter2(function(course, index){
+    return course.coin >= 600;
+});
+console.log(filterCourses);
+*/
+
+
+/*
+//some() method
+
+Array.prototype.some2 = function(callback){
+    for(var index in this){
+        if(this.hasOwnProperty(index)){
+            if(callback(this[index], index, this)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+var courses = [
+    {
+        name: 'Javascript',
+        coin: 680,
+        isFinish: false,
+    },
+    {
+        name: 'Java',
+        coin: 600,
+        isFinish: true,
+    },
+    {
+        name: 'Javascript',
+        coin: 400,
+        isFinish: false,
+    },
+];
+
+var result = courses.some2(function(course, index){
+    console.log('Index: ', index);
+    return course.isFinish;
+});
+console.log(result);
+*/
+
+//every() method
+Array.prototype.every2 = function(callback){
+    for(var index in this){
+        if(this.hasOwnProperty(index)){
+            if(!callback(this[index], index, this)){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+var courses = [
+    {
+        name: 'Javascript',
+        coin: 680,
+        isFinish: true,
+    },
+    {
+        name: 'Java',
+        coin: 600,
+        isFinish: true,
+    },
+    {
+        name: 'Javascript',
+        coin: 400,
+        isFinish: true,
+    },
+];
+
+var result = courses.every2(function(course, index){
+    console.log('Index: ', index);
+    return course.isFinish;
+});
+console.log(result);
