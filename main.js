@@ -755,6 +755,7 @@ var result = courses.some2(function(course, index){
 console.log(result);
 */
 
+/*
 //every() method
 Array.prototype.every2 = function(callback){
     for(var index in this){
@@ -789,3 +790,155 @@ var result = courses.every2(function(course, index){
     return course.isFinish;
 });
 console.log(result);
+*/
+
+
+/*
+//JSON
+var json_number = '1';
+//Parse: Từ JSON -> Javascrip type
+console.log(JSON.parse(json_number));
+
+var json_array = '["Javascrip", "PHP"]';
+console.log(JSON.parse(json_array));
+
+var json_object = '{"name":"crazy", "age":22}';
+console.log(JSON.parse(json_object));
+
+//stringify: Từ Javascrip type -> JSON
+var object = {
+    "name":"crazy", 
+    "age":22,
+    "job":'student'
+}
+var json_new = JSON.stringify(object);
+console.log(json_new);
+console.log(JSON.parse(json_new));
+*/
+
+
+//Promise
+//Sync / Async 
+
+//Sync: Đồng bộ
+// console.log(1);
+// console.log(2);
+//Kết quả hiển thị 1 trước, 2 sau
+
+//Async: Bất đồng bộ
+
+/*
+setTimeout(function(){
+    console.log(1); // Việc 1
+    setTimeout(function(){
+        console.log(2); // Việc 2
+        setTimeout(function(){
+            console.log(3); // Việc 3
+            setTimeout(function(){
+                console.log(4); // Việc 4
+            }, 1000);
+        }, 1000);
+    }, 1000);
+
+}, 1000);
+*/
+
+// Bước 1: new Promise
+// Bước 2: Executor: thi hành
+
+/*
+var promise = new Promise(
+    // Executor
+    function(resolve, reject){
+        // Logic
+        // Thành công: resolve()
+        // Thất bại: reject()
+    }
+);
+
+promise
+    // resolve() thực thi thì lệnh then thực hiện
+    .then(function(){
+    })
+
+    // reject() thực thi thì lệnh catch thực hiện
+    .catch(function(){
+    })
+
+    // thực hiện khi gọi 
+    .finally(function(){
+    })
+*/
+
+// Promise
+// function sleep(ms){
+//     return new Promise(function(resolve) {
+//         setTimeout(resolve, ms);
+//     });
+// }
+
+// sleep(1000)
+//     .then(function(){
+//         console.log(1);
+//         return sleep(1000);
+//     })
+//     .then(function(){
+//         console.log(2);
+//         return sleep(1000);
+//     })
+//     .then(function(){
+//         console.log(3);
+//         return sleep(1000);
+//     })
+
+// Promise.reject
+// var promise = Promise.reject('Error!');
+// promise
+//     .then(function(result) {
+//         console.log('result: ', result);
+//     })
+//     .catch(function(err){
+//         console.log('err: ', err);
+//     })
+
+/*
+// Promise.all
+var promise1 = new Promise(function(resolve){
+    setTimeout(function(){ 
+        resolve([1, 2, 3]);
+    }, 1000);
+});
+var promise2 = new Promise(function(resolve){
+    setTimeout(function(){
+        resolve(['a', 'b', 'c']);
+    }, 3000);
+});
+Promise.all([promise1, promise2])
+    .then(function(result) {
+        console.log(result);
+
+        var res1 = result[0];
+        var res2 = result[1];
+        console.log(res1.concat(res2));
+    });
+*/
+
+// API (url) --> Application programing interface
+
+// Cổng giao tiếp giữa các PM
+
+// Backend --> API --> Fetch --> JSON 
+// --> JSON.parse --> Javascript types
+// --> Render ra giao diện với HTML 
+
+
+var courseApi = "http://localhost:3000/courses";
+fetch(courseApi)
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(courses){
+        console.log(courses);
+    });
+
+
